@@ -1,4 +1,4 @@
-<%
+<% 
 db_host    = ENV.fetch('DB_HOST', ENV.fetch('APGITNER_DB_1_PORT_5432_TCP_ADDR', 'localhost'))
 db_port    = ENV['APGITNER_DB_1_PORT_5432_TCP_PORT'] || ENV['DB_PORT'] || 5432
 require 'etc'
@@ -7,8 +7,7 @@ pool_size =
   ENV.fetch('WEB_CONCURRENCY', 3).to_i * ENV.fetch('MAX_THREADS', 5).to_i +
   # ActiveJob Async max thread pool size
   Etc.nprocessors
-ERB
-%>
+ERB %>
 
 defaults: &defaults
   adapter: postgresql
