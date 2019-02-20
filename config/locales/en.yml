@@ -1,6 +1,6 @@
 en:
   brand:
-    name: Apgitner
+    name: Gitner
   common:
     time_ago: "%{time} ago"
   nav:
