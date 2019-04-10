@@ -1,36 +1,38 @@
-<% 
-db_host    = ENV.fetch('DB_HOST', ENV.fetch('APGITNER_DB_1_PORT_5432_TCP_ADDR', 'localhost'))
-db_port    = ENV['APGITNER_DB_1_PORT_5432_TCP_PORT'] || ENV['DB_PORT'] || 5432
-require 'etc'
-pool_size =
-  # Web: max workers * max threads
-  ENV.fetch('WEB_CONCURRENCY', 3).to_i * ENV.fetch('MAX_THREADS', 5).to_i +
-  # ActiveJob Async max thread pool size
-  Etc.nprocessors
-ERB %>
-
-defaults: &defaults
-  adapter: postgresql
-  min_messages: WARNING
-  pool: <%= pool_size %>
-  host: <%= db_host %>
-  port: <%= db_port %>
-  username: <%= ENV.fetch('DB_USERNAME', 'apgitner_dev').inspect %>
-  password: <%= ENV.fetch('DB_PASSWORD', "apgitner").inspect %>
-  encoding: utf8
-
 development:
-  <<: *defaults
-  database: apgitner_dev
-
+  adapter: postgresql
+  encoding: unicode
+  database: test
+  pool: 5
+  username: rathee
+  password:
+  timeout: 5000
+ 
+  # Connect on a TCP socket. Omitted by default since the client uses a
+  # domain socket that doesn't need configuration. Windows does not have
+  # domain sockets, so uncomment these lines.
+  #host: localhost
+ 
+  # The TCP port the server listens on. Defaults to 5432.
+  # If your server runs on a different port number, change accordingly.
+  #port: 5432
+ 
+  # Schema search path. The server defaults to $user,public
+  #schema_search_path: myapp,sharedapp,public
+ 
+  # Minimum log levels, in increasing order:
+  #   debug5, debug4, debug3, debug2, debug1,
+  #   log, notice, warning, error, fatal, and panic
+  # Defaults to warning.
+  #min_messages: notice
+ 
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
 test:
-  <<: *defaults
-  database: apgitner_test
-
-
-production:
-  <<: *defaults
-  encoding: utf8
-  min_messages: WARNING
-  url: <%= ENV['DATABASE_URL'].inspect if ENV['DATABASE_URL'] %>
-  database: <%= 'apgitner_prod' unless ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: test
+  pool: 5
+  username: rathee
+  password:
+  timeout: 5000

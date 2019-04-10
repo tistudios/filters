@@ -65,10 +65,10 @@ Thredded.currently_online_enabled = true
 Thredded.private_messaging_enabled = true
 
 # The number of topics to display per page.
-# Thredded.topics_per_page = 50
+Thredded.topics_per_page = 20
 
 # The number of posts to display per page in a topic.
-# Thredded.posts_per_page = 25
+Thredded.posts_per_page = 15
 
 # The layout for rendering Thredded views.
 Thredded.layout = 'application'
@@ -86,16 +86,16 @@ Thredded.parent_mailer = 'ApplicationMailer'
 
 # ==> Model configuration
 # The range of valid messageboard name lengths. Default:
-# Thredded.messageboard_name_length_range = (1..60)
+Thredded.messageboard_name_length_range = (1..60)
 #
 # The range of valid topic title lengths. Default:
-# Thredded.topic_title_length_range = (1..200)
+Thredded.topic_title_length_range = (1..200)
 
 # ==> Routes and URLs
 # How Thredded generates URL slugs from text:
 
 # Default:
-# Thredded.slugifier = ->(input) { input.parameterize }
+ Thredded.slugifier = ->(input) { input.parameterize }
 
 # If your forum is in a language other than English, you might want to use the babosa gem instead
 # Thredded.slugifier = ->(input) { Babosa::Identifier.new(input).normalize.transliterate(:russian).to_s }
@@ -113,7 +113,7 @@ Thredded.parent_mailer = 'ApplicationMailer'
 # ===> Emoji using the 'gemoji' gem
 # 1. Install `gemoji` following instruction at https://github.com/github/gemoji.
 # 2. Uncomment the following line:
-# Thredded::ContentFormatter.after_markup_filters.insert(1, HTML::Pipeline::EmojiFilter)
+Thredded::ContentFormatter.after_markup_filters.insert(1, HTML::Pipeline::EmojiFilter)
 
 # Change the HTML sanitization settings used by Thredded.
 # See the Sanitize docs for more information on the underlying library: https://github.com/rgrove/sanitize/#readme

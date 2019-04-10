@@ -1,47 +1,26 @@
-h1, h2, h3, h5 {
-  font-weight: normal;
+h1, h2, h3 {
+  font-size: 1em;
+  line-height: 1.1;
 }
 
 h1 {
-    font-size: 2em;
-    line-height: 1;
-
   @include thredded-media-tablet-and-up {
-    font-size: 2em;
-    font-weight: normal;
+    font-size: 1.25em;
   }
   @include thredded-media-desktop-and-up {
-    font-size: 2em;
-    font-weight: normal;
+    font-size: 1.625em;
   }
 }
 
 h2 {
-  font-size: 1.5em;
-  line-height: 1.5;
-
   @include thredded-media-tablet-and-up {
-    font-size: 1.5em;
+    font-size: 1.125em;
   }
   @include thredded-media-desktop-and-up {
-    font-size: 2em;
+    font-size: 1.55em;
   }
 }
 
-h3 {
-  font-size: 1em;
-  line-height: 1;
-}
-h5 {
-  font-size: 1.3em;
-  line-height: 1;
-  
-  @include thredded-media-tablet-and-up {
-    font-size: 1.34em;
-  }
-  @include thredded-media-desktop-and-up {
-    font-size: 1.5em;
-}}
 a {
   @extend %thredded--link;
 }
