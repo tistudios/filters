@@ -113,7 +113,7 @@ Rails.application.configure do
   if ENV['MEMCACHE_SERVERS']
     config.cache_store = :dalli_store,
         ENV['MEMCACHE_SERVERS'].split(','), {
-            namespace: 'apgitner',
+            namespace: 'torontothebackpage',
             socket_timeout: 1.5,
             socket_failure_delay: 0.2,
             down_retry_delay: 60,
