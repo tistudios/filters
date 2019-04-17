@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 # Thredded configuration
+Rails.application.config.to_prepare do
+  Thredded::ApplicationController.module_eval do
+    before_action :thredded_require_login!
 
 # ==> User Configuration
 # The name of the class your app uses for your users.
@@ -79,7 +82,7 @@ Thredded.layout = 'application'
 Thredded.email_from = %("#{I18n.t('brand.name')}" <#{Settings.email_sender}>)
 
 # Emails going out will prefix the "Subject:" with the following string
-# Thredded.email_outgoing_prefix = '[My Forum] '
+Thredded.email_outgoing_prefix = 'Toronto TBP '
 #
 # The parent mailer for all Thredded mailers
 Thredded.parent_mailer = 'ApplicationMailer'
@@ -121,7 +124,7 @@ Thredded::ContentFormatter.after_markup_filters.insert(1, HTML::Pipeline::EmojiF
 # Thredded::ContentFormatter.whitelist[:elements] += %w(custom-element)
 
 # ==> User autocompletion (Private messages and @-mentions)
-# Thredded.autocomplete_min_length = 2 lower to 1 if have 1-letter names -- increase if you want
+Thredded.autocomplete_min_length = 2
 
 # ==> Error Handling
 # By default Thredded just renders a flash alert on errors such as Topic not found, or Login required.
@@ -185,6 +188,16 @@ Thredded::ContentFormatter.after_markup_filters.insert(1, HTML::Pipeline::EmojiF
 # Thredded.notifiers = [Thredded::EmailNotifier.new, Thredded::PushoverNotifier.new(ENV['PUSHOVER_APP_ID'])]
 # frozen_string_literal: true
 
+module AllowUsersToDestroyOwnTopics
+  def destroy?
+    super || @topic.user_id == @user.id
+  end
+end
+
+Rails.application.config.to_prepare do
+  Thredded::TopicPolicy.send(:prepend, AllowUsersToDestroyOwnTopics)
+end
+
 Rails.application.config.to_prepare do
   Thredded::ApplicationController.module_eval do
     rescue_from Thredded::Errors::LoginRequired do |exception|
@@ -197,4 +210,6 @@ Rails.application.config.to_prepare do
       controller.process(:new)
     end
   end
+end
+end
 end
