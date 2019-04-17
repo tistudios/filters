@@ -53,7 +53,7 @@ Thredded.content_visible_while_pending_moderation = true
 # :position            (default) set the position manually (new messageboards go to the bottom, by creation timestamp)
 # :last_post_at_desc   most recent post first
 # :topics_count_desc   most topics first
-Thredded.messageboards_order = :position
+Thredded.messageboards_order = :last_post_at_desc
 
 # Whether users that are following a topic are listed on the topic page.
 Thredded.show_topic_followers = false
@@ -62,7 +62,7 @@ Thredded.show_topic_followers = false
 Thredded.currently_online_enabled = true
 
 # Whether private messaging functionality is enabled.
-Thredded.private_messaging_enabled = false
+Thredded.private_messaging_enabled = true
 
 # The number of topics to display per page.
 Thredded.topics_per_page = 20
