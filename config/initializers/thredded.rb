@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 # Thredded configuration
-Rails.application.config.to_prepare do
-  Thredded::ApplicationController.module_eval do
-    before_action :thredded_require_login!
-
 # ==> User Configuration
 # The name of the class your app uses for your users.
 # By default the engine will use 'User' but if you have another name
@@ -211,5 +207,10 @@ Rails.application.config.to_prepare do
     end
   end
 end
+
+Rails.application.config.to_prepare do
+  Thredded::ApplicationController.module_eval do
+    before_action { thredded_require_login! }
+  end
 end
-end
+
