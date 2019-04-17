@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: test
   pool: 5
-  username: a9a983
+  username: rathee
   password:
   timeout: 5000
  
