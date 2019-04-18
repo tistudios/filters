@@ -24,4 +24,15 @@ class ApplicationController < ActionController::Base
   def back_url
     session[:user_return_to] || (respond_to?(:root_path) ? root_path : thredded.root_path)
   end
+
+  def current_user_public?()
+    return !(current_user? || current_user_admin?)
+  end
+
+  def personals_path
+    "/personals"
+  end
+
+  helper_method :personals_path
+
 end

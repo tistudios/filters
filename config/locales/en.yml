@@ -1,14 +1,17 @@
 en:
   brand:
-    name: R4RToronto - TBP Toronto
+    name: R4RToronto
   common:
     time_ago: "%{time} ago"
   nav:
     edit_my_account: Edit my account
     forums: :thredded.nav.all_messageboards
     sign_in: :devise.shared.links.sign_in
-    sign_out: Sign out
+    sign_out: :devise.shared.links.sign_out
+    sign_up: :devise.shared.links.sign_up
     theme: Theme
+    personals: Posts
   themes:
     day: Day
+    mid: '|'
     night: Night
